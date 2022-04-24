@@ -1,0 +1,9 @@
+http://numeraljs.com/
+
+Instalación de la librería, mediante npm, con el comando:
+
+$ npm i -S numeral
+
+dónde,
+   i    >>   Instalar
+  -S    >>   Guardar la librería en el proyecto
