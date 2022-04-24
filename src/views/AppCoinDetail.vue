@@ -87,7 +87,13 @@ export default {
   methods: {
     getCoin() {
       const id = this.$route.params.id;
-      api.getAsset(id).then((asset) => (this.asset = asset));
+
+      Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
+        ([asset, history]) => {
+          this.asset = asset;
+          this.history = history;
+        }
+      );
     },
   },
 };

@@ -12,7 +12,24 @@ function getAsset(coin_id) {
     .then((respuesta) => respuesta.data);
 }
 
+function getAssetHistory(coin_id) {
+  // Tiempo actual
+  const now = new Date();
+  const end = now.getTime();
+
+  // Tiempo hace 24 horas
+  now.setDate(now.getDate() - 1);
+  const start = now.getTime();
+
+  return fetch(
+    `${url}/assets/${coin_id}/history?interval=h1&start=${start}&end=${end}`
+  )
+    .then((respuesta) => respuesta.json())
+    .then((respuesta) => respuesta.data);
+}
+
 export default {
   getAssets,
   getAsset,
+  getAssetHistory,
 };
