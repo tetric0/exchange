@@ -26,15 +26,15 @@
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio más bajo</b>
-              <span></span>
+              <span>{{ min | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio más alto</b>
-              <span></span>
+              <span>{{ max | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio Promedio</b>
-              <span></span>
+              <span>{{ avg | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Variación 24hs</b>
@@ -82,6 +82,29 @@ export default {
 
   created() {
     this.getCoin();
+  },
+
+  computed: {
+    min() {
+      return Math.min(
+        // A la función que calculará el valor mínimo - Math.min() - se le tiene
+        // que pasar un array de números. Esto lo conseguimos destructurando el
+        // array 'history' y, por cada uno de los objetos que contiene (en total
+        // 24 que representan el valor de la criptomoneda a intervalos de una
+        // hora, de las últimas 24 horas) transformar cada uno de esos objetos
+        // en un número, que será el atributo priceUsd correspondiente al precio
+        // en esa hora de la criptomoneda (desechando otros atributos del objeto).
+        ...this.history.map((h) => parseFloat(h.priceUsd))
+      );
+    },
+
+    max() {
+      return Math.max(...this.history.map((h) => parseFloat(h.priceUsd)));
+    },
+
+    avg() {
+      return Math.abs(...this.history.map((h) => parseFloat(h.priceUsd)));
+    },
   },
 
   methods: {
