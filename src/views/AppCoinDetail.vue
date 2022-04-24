@@ -153,7 +153,7 @@ export default {
   methods: {
     getWebsite(market) {
       return api.getExchange(market.exchangeId).then((respuesta) => {
-        market.url = respuesta.exchangeUrl;
+        this.$set(market, "url", respuesta.exchangeId);
       });
     },
 
