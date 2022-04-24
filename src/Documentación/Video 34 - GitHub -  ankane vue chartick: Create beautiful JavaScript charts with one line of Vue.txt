@@ -1,0 +1,22 @@
+https://github.com/ankane/vue-chartkick
+
+
+NOTA: En febrero de 2021 vue-chartkick lanzó su version 1.0, la cual sólo está
+      es compatible con Vue3.
+      
+      Para aquellos que siguen el curso con Vue2, pueden instalar la última
+      version compatible con Vue 2, anterior a esta release, de esta forma:
+      
+      $ npm i -S vue-chartkick@0.6.1
+      
+      Además, en mi caso tuve que instalar específicamente la versión 2.8.0
+      de chart.js, mediante el comando:
+      
+      $ npm i -S chart.js@2.8.0
+      
+      Si tienes instalada una versión anterior a la 2.8.0, es conveniente
+      actualizar npm, mediante el comando:
+      
+      $ npm update
+
+      Esto tendría que solucionar el problema.
