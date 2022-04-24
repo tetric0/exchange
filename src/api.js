@@ -34,8 +34,8 @@ function getMarkets(coin_id) {
     .then((respuesta) => respuesta.data);
 }
 
-function getExchange(coin_id) {
-  return fetch(`${url}/exchanges/${coin_id}`)
+function getExchange(exchange_id) {
+  return fetch(`${url}/exchanges/${exchange_id}`)
     .then((respuesta) => respuesta.json())
     .then((respuesta) => respuesta.data);
 }

@@ -90,8 +90,12 @@
           <td>{{ market.priceUsd | dollar }}</td>
           <td>{{ market.baseSymbol }} / {{ market.quoteSymbol }}</td>
           <td>
-            <px-button />
-            <a class="hover:underline text-green-600" target="_blank"></a>
+            <px-button v-if="!market.url" @custom-click="getWebsite(market)">
+              <slot>Obtener enlace</slot>
+            </px-button>
+            <a v-else class="hover:underline text-green-600" target="_blank">{{
+              market.url
+            }}</a>
           </td>
         </tr>
       </table>
@@ -147,6 +151,12 @@ export default {
   },
 
   methods: {
+    getWebsite(market) {
+      return api.getExchange(market.exchangeId).then((respuesta) => {
+        market.url = respuesta.exchangeUrl;
+      });
+    },
+
     getCoin() {
       const id = this.$route.params.id;
       this.isLoading = true;
