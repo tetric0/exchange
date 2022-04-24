@@ -1,7 +1,7 @@
 <template>
   <div>
     <bounce-loader :loading="isLoading" :color="'#68d391'" :size="100" />
-    <px-assets-table :assets="assets" />
+    <px-assets-table v-if="!isLoading" :assets="assets" />
   </div>
 </template>
 
