@@ -3,6 +3,7 @@ import Router from "vue-router";
 
 import AppHome from "@/views/AppHome";
 import AppAbout from "@/views/AppAbout";
+import AppCoinDetail from "@/views/AppCoinDetail";
 import AppError from "@/views/AppError";
 
 Vue.use(Router);
@@ -20,6 +21,11 @@ export default new Router({
       path: "/about",
       name: "app-about",
       component: AppAbout,
+    },
+    {
+      path: "/coin/:id",
+      name: "app-coin-detail",
+      component: AppCoinDetail,
     },
     {
       path: "*",
