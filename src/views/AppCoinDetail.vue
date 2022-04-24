@@ -90,6 +90,7 @@
           <td>{{ market.priceUsd | dollar }}</td>
           <td>{{ market.baseSymbol }} / {{ market.quoteSymbol }}</td>
           <td>
+            <px-button />
             <a class="hover:underline text-green-600" target="_blank"></a>
           </td>
         </tr>
@@ -100,9 +101,14 @@
 
 <script>
 import api from "@/api";
+import PxButton from "@/components/PxButton.vue";
 
 export default {
   name: "AppCoinDetail",
+
+  components: {
+    PxButton,
+  },
 
   data() {
     return {
