@@ -79,12 +79,16 @@
       />
 
       <table>
-        <tr class="border-b">
+        <tr
+          v-for="market in markets"
+          :key="`${market.exchangeId}-${market.priceUsd}`"
+          class="border-b"
+        >
           <td>
-            <b></b>
+            <b>{{ market.exchangeId }}</b>
           </td>
-          <td></td>
-          <td></td>
+          <td>{{ market.priceUsd | dollar }}</td>
+          <td>{{ market.baseSymbol }} / {{ market.quoteSymbol }}</td>
           <td>
             <a class="hover:underline text-green-600" target="_blank"></a>
           </td>
