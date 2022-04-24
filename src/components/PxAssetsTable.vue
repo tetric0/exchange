@@ -29,7 +29,12 @@
         <td>
           <b>#{{ asset.rank }}</b>
         </td>
-        <td>{{ asset.name }}</td>
+        <td>
+          <router-link
+            :to="{ name: 'app-coin-detail', params: { id: asset.id } }"
+            >{{ asset.name }}</router-link
+          >
+        </td>
         <td>{{ asset.priceUsd | dollar }}</td>
         <td>{{ asset.marketCapUsd | dollar }}</td>
         <td
