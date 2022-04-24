@@ -1,6 +1,6 @@
 <template>
   <div class="flex-col">
-    <template>
+    <template v-if="asset.id">
       <div class="flex flex-col sm:flex-row justify-around items-center">
         <div class="flex flex-col items-center">
           <img
