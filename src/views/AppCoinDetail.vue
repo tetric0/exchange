@@ -76,26 +76,6 @@ export default {
     };
   },
 
-  computed: {
-    min() {
-      return Math.min(
-        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
-      );
-    },
-
-    max() {
-      return Math.max(
-        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
-      );
-    },
-
-    avg() {
-      return Math.abs(
-        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
-      );
-    },
-  },
-
   created() {
     this.getCoin();
   },
@@ -103,13 +83,7 @@ export default {
   methods: {
     getCoin() {
       const id = this.$route.params.id;
-
-      Promise.all([api.getAsset(id), api.getAssetHistory(id)]).then(
-        ([asset, history]) => {
-          this.asset = asset;
-          this.history = history;
-        }
-      );
+      api.getAsset(id).then((asset) => (this.asset = asset));
     },
   },
 };
