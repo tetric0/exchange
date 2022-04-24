@@ -31,7 +31,7 @@
         </td>
         <td>
           <router-link
-            class="hover:underline text-gree-600"
+            class="hover:underline text-green-600"
             :to="{ name: 'app-coin-detail', params: { id: asset.id } }"
           >
             {{ asset.name }}</router-link
