@@ -36,6 +36,7 @@
           >
             {{ asset.name }}</router-link
           >
+          <small class="ml-1 text-gray-500">{{ asset.symbol }}</small>
         </td>
         <td>{{ asset.priceUsd | dollar }}</td>
         <td>{{ asset.marketCapUsd | dollar }}</td>
