@@ -10,7 +10,7 @@
           />
           <h1 class="text-5xl">
             {{ asset.name }}
-            <small class="sm:mr-2 text-gray-500"></small>
+            <small class="sm:mr-2 text-gray-500">{{ asset.symbol }}</small>
           </h1>
         </div>
 
@@ -18,11 +18,11 @@
           <ul>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Ranking</b>
-              <span></span>
+              <span>{{ asset.rank }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio actual</b>
-              <span></span>
+              <span>{{ asset.priceUsd | dollar }}</span>
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Precio más bajo</b>
@@ -38,7 +38,7 @@
             </li>
             <li class="flex justify-between">
               <b class="text-gray-600 mr-10 uppercase">Variación 24hs</b>
-              <span></span>
+              <span>{{ asset.changePercent24Hr | percent }}</span>
             </li>
           </ul>
         </div>
