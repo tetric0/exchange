@@ -71,7 +71,7 @@
 import api from "@/api";
 
 export default {
-  name: "CoinDetail",
+  name: "AppCoinDetail",
 
   data() {
     return {
