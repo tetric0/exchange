@@ -90,7 +90,11 @@
           <td>{{ market.priceUsd | dollar }}</td>
           <td>{{ market.baseSymbol }} / {{ market.quoteSymbol }}</td>
           <td>
-            <px-button v-if="!market.url" @custom-click="getWebsite(market)">
+            <px-button
+              :is-loading="market.isLoading || false"
+              v-if="!market.url"
+              @custom-click="getWebsite(market)"
+            >
               <slot>Obtener enlace</slot>
             </px-button>
             <a v-else class="hover:underline text-green-600" target="_blank">{{
@@ -152,9 +156,16 @@ export default {
 
   methods: {
     getWebsite(market) {
-      return api.getExchange(market.exchangeId).then((respuesta) => {
-        this.$set(market, "url", respuesta.exchangeId);
-      });
+      this.$set(market, "isLoading", true);
+
+      return api
+        .getExchange(market.exchangeId)
+        .then((respuesta) => {
+          this.$set(market, "url", respuesta.exchangeId);
+        })
+        .finally(() => {
+          this.$set(market, "isLoading", false);
+        });
     },
 
     getCoin() {
