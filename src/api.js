@@ -28,8 +28,22 @@ function getAssetHistory(coin_id) {
     .then((respuesta) => respuesta.data);
 }
 
+function getMarkets(coin_id) {
+  return fetch(`${url}/assets/${coin_id}/markets?limits=5`)
+    .then((respuesta) => respuesta.json())
+    .then((respuesta) => respuesta.data);
+}
+
+function getExchange(coin_id) {
+  return fetch(`${url}/exchanges/${coin_id}`)
+    .then((respuesta) => respuesta.json())
+    .then((respuesta) => respuesta.data);
+}
+
 export default {
   getAssets,
   getAsset,
+  getMarkets,
+  getExchange,
   getAssetHistory,
 };
