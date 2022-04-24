@@ -77,6 +77,19 @@
           history.map((obj) => [obj.date, parseFloat(obj.priceUsd).toFixed(2)])
         "
       />
+
+      <table>
+        <tr class="border-b">
+          <td>
+            <b></b>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <a class="hover:underline text-green-600" target="_blank"></a>
+          </td>
+        </tr>
+      </table>
     </template>
   </div>
 </template>
@@ -92,6 +105,7 @@ export default {
       isLoading: false,
       asset: {},
       history: [],
+      markets: [],
     };
   },
 
@@ -127,10 +141,15 @@ export default {
       const id = this.$route.params.id;
       this.isLoading = true;
 
-      Promise.all([api.getAsset(id), api.getAssetHistory(id)])
-        .then(([asset, history]) => {
+      Promise.all([
+        api.getAsset(id),
+        api.getAssetHistory(id),
+        api.getMarkets(id),
+      ])
+        .then(([asset, history, markets]) => {
           this.asset = asset;
           this.history = history;
+          this.markets = markets;
         })
         .finally(() => (this.isLoading = false));
     },

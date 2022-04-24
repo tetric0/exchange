@@ -29,7 +29,7 @@ function getAssetHistory(coin_id) {
 }
 
 function getMarkets(coin_id) {
-  return fetch(`${url}/assets/${coin_id}/markets?limits=5`)
+  return fetch(`${url}/assets/${coin_id}/markets?limit=5`)
     .then((respuesta) => respuesta.json())
     .then((respuesta) => respuesta.data);
 }
