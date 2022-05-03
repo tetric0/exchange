@@ -154,6 +154,12 @@ export default {
     },
   },
 
+  watch: {
+    $route() {
+      this.getCoin();
+    },
+  },
+
   methods: {
     getWebsite(market) {
       this.$set(market, "isLoading", true);
